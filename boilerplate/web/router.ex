@@ -19,6 +19,10 @@ defmodule Boilerplate.Router do
     get "/", PageController, :index
   end
 
+  scope "/admin", Boilerplate do
+    pipe_through :browser
+    resources "/users", UserController
+  end
   # Other scopes may use custom stacks.
   # scope "/api", Boilerplate do
   #   pipe_through :api
