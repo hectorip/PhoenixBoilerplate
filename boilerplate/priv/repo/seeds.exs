@@ -9,3 +9,10 @@
 #
 # We recommend using the bang functions (`insert!`, `update!`
 # and so on) as they will fail if something goes wrong.
+
+alias Boilerplate.Repo
+alias Boilerplate.User
+
+user_data = %{username: "admin", email: "somemail@gmail.com", password: "123456", status: 1}
+changeset = User.registration_changeset(%User{}, user_data)
+Repo.insert! changeset

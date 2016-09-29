@@ -1,12 +1,12 @@
 defmodule Boilerplate.SessionController do
   use Boilerplate.Web, :controller
 
-  def new(conn, _params) do
-    render("new.html")
+  def new(conn, _) do
+    render conn, "new.html"
   end
 
   def create(conn, %{"session" => %{"username" => username, "password" => pass}}) do
-    case Boilerplate.Auth.login_by_username_and_password(conn, username, pass, repo:Repo) do
+    case Boilerplate.Auth.login_by_username_and_password(conn, username, pass, repo: Repo) do
       {:ok, conn} ->
         conn
         |> put_flash(:info, "Welcome back!")

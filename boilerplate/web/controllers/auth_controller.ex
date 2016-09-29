@@ -12,7 +12,7 @@ defmodule Boilerplate.Auth do
   def call(conn, repo) do
     user_id = get_session(conn, :user_id)
     user = user_id && repo.get(Rumbl.User, user_id)
-    assogn(conn, :current_user, user)
+    assign(conn, :current_user, user)
   end
 
   def login(conn, user) do

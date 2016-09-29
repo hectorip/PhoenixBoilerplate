@@ -31,7 +31,7 @@ defmodule Boilerplate.User do
 
   def put_hashed_pass(changeset) do
     case changeset do
-      %Ecto.Changeset{valid?: true, changes: %{pass}} ->
+      %Ecto.Changeset{valid?: true, changes: %{"password" => pass}} ->
         put_change(changeset, :password_hash, Comeonin.Bcrypt.hashpwsalt(pass))
       _ ->
         changeset
