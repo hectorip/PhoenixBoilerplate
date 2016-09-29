@@ -6,6 +6,7 @@ defmodule Boilerplate.SessionController do
   end
 
   def create(conn, %{"session" => %{"username" => username, "password" => pass}}) do
+    IO.inspect pass
     case Boilerplate.Auth.login_by_username_and_password(conn, username, pass, repo: Repo) do
       {:ok, conn} ->
         conn
