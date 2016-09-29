@@ -18,13 +18,23 @@ defmodule Boilerplate.User do
   """
   def changeset(struct, params \\ :empty) do
     struct
-    |> cast(params, [:username, :email, :password_hash, :status], [:first_name, :last_name])
-    # |> validate_required([:first_name, :last_name, :username, :email, :password_hash, :status])
+    |> cast(params, [:first_name, :last_name, :username, :email, :password, :status])
+    |> validate_required([:username, :email, :password, :status])
   end
 
   def registration_changeset(struct, params) do
     struct
     |> changeset(params)
     |> validate_length(:password, min: 6)
+    |> put_hashed_pass
+  end
+
+  def put_hashed_pass(changeset) do
+    case changeset do
+      %Ecto.Changeset{valid?: true, changes: %{pass}} ->
+        put_change(changeset, :password_hash, Comeonin.Bcrypt.hashpwsalt(pass))
+      _ ->
+        changeset
+    end
   end
 end
