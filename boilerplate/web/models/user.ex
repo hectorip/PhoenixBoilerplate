@@ -6,6 +6,7 @@ defmodule Boilerplate.User do
     field :last_name, :string
     field :username, :string
     field :email, :string
+    field :password, :string, virtual: true
     field :password_hash, :string
     field :status, :integer
 
@@ -15,9 +16,15 @@ defmodule Boilerplate.User do
   @doc """
   Builds a changeset based on the `struct` and `params`.
   """
-  def changeset(struct, params \\ %{}) do
+  def changeset(struct, params \\ :empty) do
     struct
-    |> cast(params, [:first_name, :last_name, :username, :email, :password_hash, :status])
-    |> validate_required([:first_name, :last_name, :username, :email, :password_hash, :status])
+    |> cast(params, [:username, :email, :password_hash, :status], [:first_name, :last_name])
+    # |> validate_required([:first_name, :last_name, :username, :email, :password_hash, :status])
+  end
+
+  def registration_changeset(struct, params) do
+    struct
+    |> changeset(params)
+    |> validate_length(:password, min: 6)
   end
 end
