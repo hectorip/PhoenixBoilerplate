@@ -16,8 +16,8 @@ defmodule Boilerplate.Router do
   scope "/", Boilerplate do
     pipe_through :browser # Use the default browser stack
 
-    get "/", PageController, :index
     resources "/session", SessionController, only: [:new, :create]
+    get "/", PageController, :index
   end
 
   scope "/admin", Boilerplate do
