@@ -36,6 +36,7 @@ defmodule Boilerplate.Web do
 
       import Boilerplate.Router.Helpers
       import Boilerplate.Gettext
+      import Boilerplate.Auth, only: [authenticate_user: 2]
     end
   end
 
@@ -58,6 +59,7 @@ defmodule Boilerplate.Web do
   def router do
     quote do
       use Phoenix.Router
+      import Boilerplate.Auth, only: [authenticate_user: 2]
     end
   end
 

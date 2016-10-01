@@ -7,6 +7,7 @@ defmodule Boilerplate.Router do
     plug :fetch_flash
     plug :protect_from_forgery
     plug :put_secure_browser_headers
+    plug Boilerplate.Auth, repo: Boilerplate.Repo 
   end
 
   pipeline :api do
@@ -23,7 +24,7 @@ defmodule Boilerplate.Router do
   end
 
   scope "/admin", Boilerplate do
-    pipe_through :browser
+    pipe_through [:browser, :authenticate_user]
     resources "/users", UserController
   end
   # Other scopes may use custom stacks.
