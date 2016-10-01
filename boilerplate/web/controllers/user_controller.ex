@@ -69,6 +69,19 @@ defmodule Boilerplate.UserController do
   end
 
   def register_user(conn, %{"user" => user_params}) do
-    json conn, user_params
+    user = %User{}
+      |> User.registration_changeset(user_params)
+      |> Repo.insert
+
+    case user do
+      {:ok, _user} ->
+        conn
+        |> put_flash(:info, "The user has been created")
+        |> redirect(to: page_path(conn, :index))
+      {:error, changeset} ->
+        conn
+        |> render("registration.html", changeset: changeset)
+    end
+
   end
 end

@@ -19,7 +19,7 @@ defmodule Boilerplate.User do
   def changeset(struct, params \\ :empty) do
     struct
     |> cast(params, [:first_name, :last_name, :username, :email, :password, :status])
-    |> validate_required([:username, :email, :password, :status])
+    |> validate_required([:username, :email, :password])
   end
 
   def registration_changeset(struct, params) do

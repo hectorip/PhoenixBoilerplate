@@ -29,5 +29,5 @@
         <%= password_input f, :password, placeholder: "youknownothing", class: "form-control" %>
         <%= error_tag f, :password %>
     </div>
-    <%= submit "Register", class: "tn btn-primary" %>
+    <%= submit "Register", class: "btn btn-primary" %>
 <% end %>
