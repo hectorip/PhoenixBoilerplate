@@ -17,6 +17,8 @@ defmodule Boilerplate.Router do
     pipe_through :browser # Use the default browser stack
 
     resources "/session", SessionController, only: [:new, :create]
+    get "/register", UserController, :register
+    post "/register", UserController, :register_user
     get "/", PageController, :index
   end
 

@@ -62,4 +62,13 @@ defmodule Boilerplate.UserController do
     |> put_flash(:info, "User deleted successfully.")
     |> redirect(to: user_path(conn, :index))
   end
+
+  def register(conn, _params) do
+    user = User.changeset(%User{})
+    render conn, "registration.html", changeset: user
+  end
+
+  def register_user(conn, %{"user" => user_params}) do
+    json conn, user_params
+  end
 end
