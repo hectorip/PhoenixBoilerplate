@@ -21,7 +21,7 @@ defmodule Boilerplate.SessionController do
 
   def delete(conn, _params) do
     conn
-    |> Rumbl.Auth.logout()
+    |> Boilerplate.Auth.logout()
     |> redirect(to: page_path(conn, :index))
   end
 end
