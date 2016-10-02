@@ -34,3 +34,11 @@
     </ul>
   </div>
 </div>
+
+<div class="row">
+  <%= if @current_user do %>
+    You're logged in!
+  <%= else %>
+    <%= render SessionView, "new.html", conn: @conn %>
+  <% end %>
+</div>

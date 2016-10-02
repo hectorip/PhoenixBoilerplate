@@ -20,8 +20,8 @@
             <li> <%= link @current_user.username, to: "#" %></li>
             <li> <%= link "Logout", to: session_path(@conn, :delete, @current_user), method: "delete" %></li>
           <%= else %>
-            <li> <%= link "Login", session_path(@conn, :new) %></li>
-            <li> <%= link "Register", user_path(@conn, :register) %></li>
+            <li> <%= link "Login", to: session_path(@conn, :new) %></li>
+            <li> <%= link "Register", to: user_path(@conn, :register) %></li>
           <% end %>
             <li><a href="http://www.phoenixframework.org/docs">Get Started</a></li>
           </ul>
