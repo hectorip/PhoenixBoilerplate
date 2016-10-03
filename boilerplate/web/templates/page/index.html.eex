@@ -44,11 +44,21 @@
     </ul>
   </div>
 </div>
-
+ <div class="row">
+   <div class="col-lg-12">
+     <h4>Next functionalities: </h4>
+     <ul>
+       <li> Social Login/Register </li>
+       <li> Admin ready </li>
+     </ul>
+   </div>
+ </div>
 <div class="row">
-  <%= if @current_user do %>
-    You're logged in!
-  <%= else %>
-    <%= render Boilerplate.SessionView, "new.html", conn: @conn %>
-  <% end %>
+  <div class="col-lg-12">
+    <%= if @current_user do %>
+      You're logged in!
+    <%= else %>
+      <%= render Boilerplate.SessionView, "new.html", conn: @conn %>
+    <% end %>
+  </div>
 </div>
