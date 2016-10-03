@@ -39,6 +39,6 @@
   <%= if @current_user do %>
     You're logged in!
   <%= else %>
-    <%= render SessionView, "new.html", conn: @conn %>
+    <%= render Boilerplate.SessionView, "new.html", conn: @conn %>
   <% end %>
 </div>
